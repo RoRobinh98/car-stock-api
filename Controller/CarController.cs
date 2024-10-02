@@ -52,4 +52,12 @@ public class CarController : ControllerBase
 
         return Ok(cars);
     }
+
+    [HttpPut("update-stock/{carId}")]
+    [Authorize]
+    public IActionResult UpdateCarStock(int carId, [FromBody] int newStockLevel)
+    {
+        _carService.UpdateCarStock(carId, newStockLevel);
+        return Ok("Stock level updated successfully.");
+    }
 }
